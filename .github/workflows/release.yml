@@ -13,6 +13,16 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@master
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm install, build, and test
+        run: |
+          npm ci
+          npm run build
+        env:
+          CI: true
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
