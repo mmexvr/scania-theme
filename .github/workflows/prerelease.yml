@@ -3,6 +3,8 @@ name: prerelease
 on:
  release:
   types: [prereleased]
+  branch: master
+  tags: '*.*.*-*'
 
 jobs:
   build:
@@ -22,6 +24,6 @@ jobs:
     - name: npm install, build, and test
       run: |
         npm ci
-        npm run build --if-present
+        npm run build
       env:
         CI: true
