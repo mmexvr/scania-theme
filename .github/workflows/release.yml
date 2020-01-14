@@ -3,7 +3,7 @@ name: Releases
 on:
  push:
   tags:
-   - '1.0.11
+   - '1.*
 
 
 jobs:
