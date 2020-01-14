@@ -3,6 +3,7 @@ name: Releases
 on:
  release:
   types: [published]
+  tags: '4'
 
 jobs:
   build:
