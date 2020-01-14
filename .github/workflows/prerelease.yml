@@ -4,7 +4,7 @@ on:
  release:
   types: [prereleased]
   branch: master
-  tags: '4.*.*-*'
+  tags: '\d.\d.\d-\d'
 
 jobs:
   build:
