@@ -10,13 +10,14 @@ jobs:
     name: Release Job
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout master code
         uses: actions/checkout@master
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js version ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: npm install, build, and test
+          run: ${{ matrix.node-version }}
+      - name: NPM CI and Build
         run: |
           npm ci
           npm run build
