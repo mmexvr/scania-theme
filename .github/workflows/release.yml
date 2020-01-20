@@ -6,8 +6,8 @@ on:
     branches: 'release/**'
 
 jobs:
-  build:
-    name: Release Job
+  job_id_1:
+    name: Release Job 1
     runs-on: ubuntu-latest
 
     strategy:
@@ -27,13 +27,18 @@ jobs:
           npm run build
         env:
           CI: true
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Version ${{ github.ref }}
-          draft: false
-          prerelease: false
+
+  job_id_2:
+   name: release job 2
+   runs-on: ubuntu-latest
+   steps:
+     - name: Create Release
+       id: create_release
+       uses: actions/create-release@v1
+       env:
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+       with:
+        tag_name: ${{ github.ref }}
+        release_name: Version ${{ github.ref }}
+        draft: false
+        prerelease: false
