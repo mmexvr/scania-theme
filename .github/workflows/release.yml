@@ -29,6 +29,7 @@ jobs:
           CI: true
 
   job_id_2:
+   needs: job_id_1
    name: release job 2
    runs-on: ubuntu-latest
    steps:
