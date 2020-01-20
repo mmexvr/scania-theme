@@ -3,7 +3,7 @@ name: Release Workflow
 on:
   push:
     # Sequence of patterns matched against refs/tags
-    tags: 'release/**'
+    branches: 'release/**'
 
 jobs:
   build:
