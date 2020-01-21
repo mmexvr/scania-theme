@@ -20,6 +20,7 @@ jobs:
           GH_BRANCH: test
         run: |
           echo ${GITHUB_REF##*/}
+          echo ${GH_BRANCH}
           echo ${{ github.ref }}
           echo ${{ github.actor}}
       - name: Checkout master code
