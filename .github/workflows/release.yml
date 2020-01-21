@@ -22,8 +22,8 @@ jobs:
         run: |
           echo ${GH_BRANCH}
           echo ${GITHUB_REF##*/}
-          echo "::set-env name=GH_BRANCH::${GH_BRANCH##*/}"
-          echo ${GH_BRANCH}
+          echo $GH_BRANCH="testtext"
+          echo $GH_BRANCH
       - name: Checkout master code
         uses: actions/checkout@master
       - name: Use NODE.js 
