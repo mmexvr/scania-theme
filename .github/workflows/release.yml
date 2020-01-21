@@ -22,7 +22,7 @@ jobs:
         run: |
           echo ${GH_BRANCH}
           echo $GH_BRANCH="testtext"
-          echo ::set-env name=GH_BRANCH2::${GITHUB_REF##*/}
+          echo "::set-env name=GH_BRANCH2::${GITHUB_REF##*/}"
           echo $GH_BRANCH2
       - name: Checkout master code
         uses: actions/checkout@master
