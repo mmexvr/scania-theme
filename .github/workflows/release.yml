@@ -45,7 +45,7 @@ jobs:
           GH_BRANCH: $GITHUB_REF
         run: |
           echo $GITHUB_REF=${GITHUB_REF}
-          echo $GH_BRANCH=${GITHUB_REF##*/}
+          echo $GH_BRANCH=$GITHUB_REF##*/
           echo $GH_BRANCH
      - name: Create Release GH
        id: create_release_GH
