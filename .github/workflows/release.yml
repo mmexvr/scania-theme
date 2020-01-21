@@ -23,7 +23,7 @@ jobs:
           echo ${GH_BRANCH##*/}
           echo ${GITHUB_REF}
           echo ${GITHUB_REF##*/}
-          echo ${GH_BRANCH}
+          echo ${GH_BRANCH}=${GH_BRANCH##*/}
       - name: Checkout master code
         uses: actions/checkout@master
       - name: Use NODE.js 
