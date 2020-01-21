@@ -36,6 +36,8 @@ jobs:
 
   job_id_2: # Release on github job
    needs: job_id_1
+   env: 
+     GH_BRANCH: ${GITHUB_REF##*/}
    name: ReleaseJob-Release_on_GH
    runs-on: ubuntu-latest
    steps:
@@ -45,7 +47,7 @@ jobs:
        env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
        with:
-        tag_name: ${{ github.ref##*/ }}
+        tag_name: ${{ GH_BRANCH }}
         release_name: Version ${{ github.ref }}
         draft: false
         prerelease: false
