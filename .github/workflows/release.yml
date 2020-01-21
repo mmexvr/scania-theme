@@ -20,7 +20,7 @@ jobs:
         env: 
           GH_BRANCH: ${GITHUB_REF}
         run: |
-          $GH_BRANCH=${GITHUB_REF##*/}
+          GH_BRANCH=PROD
           echo $GH_BRANCH=${GITHUB_REF##*/}
           echo $GH_BRANCH
       - name: Checkout master code
