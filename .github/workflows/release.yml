@@ -12,18 +12,19 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x]
+        # node-version: [10.x, 12.x]
+        node-version: [10.x]
 
     steps: #Steps for running build
       - name: Run a multi-line script
         env: 
-          GH_BRANCH: $GITHUB_REF
+          GH_BRANCH: test
         run: |
-          echo ${GITHUB_REF}
-          echo ${GITHUB_REF##*/}
-          echo ${GH_BRANCH}
-          echo ${GH_BRANCH}=${GITHUB_REF##*/}
-          echo ${GH_BRANCH}
+          echo ${env.GITHUB_REF}
+          echo ${env.GITHUB_REF##*/}
+          echo ${env.GH_BRANCH}
+          echo ${env.GH_BRANCH}=${GITHUB_REF##*/}
+          echo ${env.GH_BRANCH}
           echo ${{ github.ref }}
           echo ${{ github.actor}}
       - name: Checkout master code
