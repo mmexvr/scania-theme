@@ -20,10 +20,10 @@ jobs:
         env: 
           GH_BRANCH: test
         run: |
-          echo ${env.GITHUB_REF}
-          echo ${env.GITHUB_REF##*/}
+          echo ${GITHUB_REF}
+          echo ${GITHUB_REF##*/}
           echo ${env.GH_BRANCH}
-          echo ${env.GH_BRANCH}=${GITHUB_REF##*/}
+          echo env.GH_BRANCH
           echo ${env.GH_BRANCH}
           echo ${{ github.ref }}
           echo ${{ github.actor}}
