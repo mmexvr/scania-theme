@@ -18,9 +18,9 @@ jobs:
     steps: #Steps for running build
       - name: Run a multi-line script
         env: 
-          GH_BRANCH: $GITHUB_REF
+          GH_BRANCH: ${GITHUB_REF}
         run: |
-          echo $GITHUB_REF=${GITHUB_REF}
+          $GH_BRANCH=${GITHUB_REF##*/}
           echo $GH_BRANCH=${GITHUB_REF##*/}
           echo $GH_BRANCH
       - name: Checkout master code
