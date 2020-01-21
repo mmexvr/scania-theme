@@ -22,7 +22,7 @@ jobs:
         run: |
           echo ${GITHUB_REF}
           echo ${GITHUB_REF##*/}
-          echo ${env.GH_BRANCH}
+          #echo ${env.GH_BRANCH}
           echo env.GH_BRANCH
           echo ${env.GH_BRANCH}
           echo ${{ github.ref }}
