@@ -18,12 +18,12 @@ jobs:
     steps: #Steps for running build
       - name: Run a multi-line script
         env: 
-          GH_BRANCH: ${{ github.ref }}
+          GH_BRANCH: $GITHUB_REF
         run: |
           echo GITHUB_REF=${GITHUB_REF}
           echo $GH_BRANCH=${GITHUB_REF##*/}
           echo $GH_BRANCH=$(echo ${GITHUB_REF#refs/heads/})
-          echo 
+          echo $GH_BRANCH
       - name: Checkout master code
         uses: actions/checkout@master
       - name: Use NODE.js 
