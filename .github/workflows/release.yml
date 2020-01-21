@@ -17,7 +17,7 @@ jobs:
     steps: #Steps for running build
       - name: Run a multi-line script
         env: 
-          GH_BRANCH: ${{GITHUB_REF}}
+          GH_BRANCH: ${{ github.ref }}
         run: |
           echo ${GITHUB_REF}
           echo ${GITHUB_REF##*/}
