@@ -17,14 +17,14 @@ jobs:
     steps: #Steps for running build
       - name: Run a multi-line script
         env: 
-          GH_BRANCH: ${{ github.ref }}
+          GH_BRANCH: ${{ GITHUB_REF }}
         run: |
           echo ${GITHUB_REF}
           echo ${GITHUB_REF##*/}
           echo ${GH_BRANCH}
           echo ${GH_BRANCH}=${GITHUB_REF##*/}
           echo ${GH_BRANCH}
-          echo ${{ github.ref##*/ }}
+          echo ${{ github.ref }}
           echo ${{ github.actor}}
       - name: Checkout master code
         uses: actions/checkout@master
