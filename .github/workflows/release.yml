@@ -21,6 +21,8 @@ jobs:
         run: |
           echo ${GITHUB_REF##*/}
           echo ${GH_BRANCH}
+          echo ${GH_BRANCH}=${GITHUB_REF##*/}
+          echo ${GH_BRANCH}
           echo ${{ github.ref }}
           echo ${{ github.actor}}
       - name: Checkout master code
