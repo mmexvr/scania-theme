@@ -21,8 +21,9 @@ jobs:
           GH_BRANCH: ${{ github.ref }}
         run: |
           echo GITHUB_REF=${GITHUB_REF}
-          echo EXTRACT_GITHUB_REF=${GITHUB_REF##*/}
-          echo EXTRACT_GITHUB_REF_HEADS=$(echo ${GITHUB_REF#refs/heads/})
+          echo $GH_BRANCH=${GITHUB_REF##*/}
+          echo $GH_BRANCH=$(echo ${GITHUB_REF#refs/heads/})
+          echo 
       - name: Checkout master code
         uses: actions/checkout@master
       - name: Use NODE.js 
@@ -31,8 +32,8 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: NPM CI and Build
         run: |
-          npm ci 
-          npm run build
+  #        npm ci 
+  #        npm run build
         env:
           CI: true
 
