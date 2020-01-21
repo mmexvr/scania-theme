@@ -19,9 +19,9 @@ jobs:
         env: 
           GH_BRANCH: test
         run: |
-          echo ${{ GITHUB_REF##*/ }}
+          echo ${GITHUB_REF##*/}}
           echo ${{ github.ref }}
-          echo ${{ env.GH_BRANCH }}
+          echo ${env.GH_BRANCH}
           echo ${{ github.actor}}
       - name: Checkout master code
         uses: actions/checkout@master
