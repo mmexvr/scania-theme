@@ -20,7 +20,7 @@ jobs:
         env: 
           GH_BRANCH: $GITHUB_REF
         run: |
-          echo GITHUB_REF=${GITHUB_REF}
+          echo $GITHUB_REF=${GITHUB_REF}
           echo $GH_BRANCH=${GITHUB_REF##*/}
           echo $GH_BRANCH
       - name: Checkout master code
@@ -44,7 +44,7 @@ jobs:
      -  env: 
           GH_BRANCH: $GITHUB_REF
         run: |
-          echo GITHUB_REF=${GITHUB_REF}
+          echo $GITHUB_REF=${GITHUB_REF}
           echo $GH_BRANCH=${GITHUB_REF##*/}
           echo $GH_BRANCH
      - name: Create Release GH
