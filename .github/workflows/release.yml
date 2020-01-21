@@ -19,7 +19,8 @@ jobs:
     steps: #Steps for running build
       - name: Run a multi-line script
         run: |
-          echo $GH_BRANCH=${ GH_BRANCH##*/ }
+          echo ${ GITHUB_REF##*/ }
+          echo ${ env.GH_BRANCH }
           echo ${{ github.ref }}
           echo ${{ GH_BRANCH }}
           echo ${{ github.actor}}
@@ -41,15 +42,13 @@ jobs:
    name: ReleaseJob-Release_on_GH
    runs-on: ubuntu-latest
    steps:
-     - name: Add ENV var
-       run: GH_BRANCH=${ GH_BRANCH##*/ }
      - name: Create Release GH
        id: create_release_GH
        uses: actions/create-release@v1
        env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
        with:
-        tag_name: ${{ env.GH_BRANCH }}
+        tag_name: ${{ github.ref }}
         release_name: Version ${{ github.ref }}
         draft: false
         prerelease: false
