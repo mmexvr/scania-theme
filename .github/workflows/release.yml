@@ -17,10 +17,10 @@ jobs:
     steps: #Steps for running build
       - name: Run a multi-line script
         run: |
-          echo ${GITHUB_REF##*/},
-          echo ${{ github.ref }},
-          echo ${{ github.event_name }},
-          echo ${{ github.actor}},
+          echo ${GITHUB_REF##*/}
+          echo ${{ github.ref }}
+          echo ${{ github.event_name }}
+          echo ${{ github.actor}}
       - name: Checkout master code
         uses: actions/checkout@master
       - name: Use NODE.js 
@@ -45,7 +45,7 @@ jobs:
        env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
        with:
-        tag_name: ${{ github.ref_head }}
+        tag_name: ${GITHUB_REF##*/}
         release_name: Version ${{ github.ref }}
         draft: false
         prerelease: false
