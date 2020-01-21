@@ -24,6 +24,7 @@ jobs:
           echo ${GITHUB_REF##*/}
           echo $GH_BRANCH="testtext"
           echo $GH_BRANCH
+          echo ${{ github.ref##*/ }}
       - name: Checkout master code
         uses: actions/checkout@master
       - name: Use NODE.js 
