@@ -45,7 +45,7 @@ jobs:
           GH_BRANCH: ${GITHUB_REF}
         run: |
           GH_BRANCH=${GITHUB_REF##*/}
-          echo env.GH_BRANCH
+          echo env.$GH_BRANCH
           echo $GH_BRANCH
      - name: Create Release GH
        id: create_release_GH
@@ -53,7 +53,7 @@ jobs:
        env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
        with:
-        tag_name: $GH_BRANCH
-        release_name: $GH_BRANCH
+        tag_name: $GITHUB_REF
+        release_name: $GITHUB_REF
         draft: false
         prerelease: false
