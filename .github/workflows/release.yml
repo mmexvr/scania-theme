@@ -20,8 +20,8 @@ jobs:
         env: 
           GH_BRANCH: ${GITHUB_REF}
         run: |
+          echo $GH_BRANCH
           GH_BRANCH=${GITHUB_REF##*/}
-          echo ${{ env.GH_BRANCH }}
           echo $GH_BRANCH
       - name: Checkout master code
         uses: actions/checkout@master
@@ -44,7 +44,10 @@ jobs:
      -  env: 
           GH_BRANCH: ${GITHUB_REF}
         run: |
+          echo $GH_BRANCH
           GH_BRANCH=${GITHUB_REF##*/}
+          echo ${{ GH_BRANCH }}
+          echo ${ GH_BRANCH }
           echo $GH_BRANCH
      - name: Create Release GH
        id: create_release_GH
@@ -52,7 +55,7 @@ jobs:
        env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
        with:
-        tag_name: ${{ env.GH_BRANCH }}
-        release_name: ${{ env.GH_BRANCH }}
+        tag_name: ${ GH_BRANCH }
+        release_name: ${ GH_BRANCH }
         draft: false
         prerelease: false
