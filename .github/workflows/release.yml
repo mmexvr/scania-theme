@@ -37,7 +37,7 @@ jobs:
      - name: something1
        env:
           GH_BRANCH: ${GITHUB_REF}
-       run: |
+       with: |
           GH_BRANCH=${GITHUB_REF##*/}
           echo $GH_BRANCH
      - name: something2
