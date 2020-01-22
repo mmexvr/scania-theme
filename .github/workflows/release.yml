@@ -34,13 +34,15 @@ jobs:
    name: ReleaseJob-Release_on_GH
    runs-on: ubuntu-latest
    steps:
-     - name: something
+     - name: something1
        env:
           GH_BRANCH: ${GITHUB_REF}
        run: |
           GH_BRANCH=${GITHUB_REF##*/}
           echo $GH_BRANCH
-          echo ${{env.GH_BRANCH}}
+     - name: something2
+       run: |
+         echo ${{steps.something1.env.GH_BRANCH }}
      - name: Create Release GH
        id: create_release_GH
        uses: actions/create-release@v1
@@ -48,7 +50,7 @@ jobs:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
          GH_BRANCH: test
        with:
-        tag_name: ${{steps.something.env.$GH_BRANCH}}
-        release_name: ${{steps.something.env}}
+        tag_name: ${{ GH_BRANCH }}
+        release_name: ${{ GH_BRANCH }}
         draft: false
         prerelease: false
