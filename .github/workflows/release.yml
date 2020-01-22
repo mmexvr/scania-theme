@@ -43,9 +43,10 @@ jobs:
    steps:
      -  env: 
           GH_BRANCH: ${GITHUB_REF}
+          GH_TEST: ${{jobs.job_id_1.GH_BRANCH}}
         run: |
           GH_BRANCH=${GITHUB_REF##*/}
-          echo ${{jobs.job_id_1.GH_BRANCH}}
+          echo GH_TEST
           echo $GH_BRANCH
      - name: Create Release GH
        id: create_release_GH
