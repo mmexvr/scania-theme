@@ -16,7 +16,7 @@ jobs:
         node-version: [10.x]
 
     steps: #Steps for running build
-      - name: Checkout master code
+      - name: Checkout code
         uses: actions/checkout@master
       - name: Use NODE.js 
         uses: actions/setup-node@v1
@@ -48,7 +48,7 @@ jobs:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
          GH_BRANCH: test
        with:
-        tag_name: ${{steps.something.env.GH_BRANCH}}
+        tag_name: ${{steps.something.env.$GH_BRANCH}}
         release_name: ${{steps.something.env}}
         draft: false
         prerelease: false
