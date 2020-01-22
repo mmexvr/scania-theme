@@ -16,13 +16,6 @@ jobs:
         node-version: [10.x]
 
     steps: #Steps for running build
-      - name: Run a multi-line script
-        env: 
-          GH_BRANCH: ${GITHUB_REF}
-        run: |
-          echo $GH_BRANCH
-          GH_BRANCH=${GITHUB_REF##*/}
-          echo $GH_BRANCH
       - name: Checkout master code
         uses: actions/checkout@master
       - name: Use NODE.js 
@@ -52,7 +45,7 @@ jobs:
        env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
        with:
-        tag_name: ${ jobs.job_id_2.env.GH_BRANCH }
-        release_name: ${ jobs.job_id_2..env.GH_BRANCH }
+        tag_name: ${{ GITHUB_REF }}
+        release_name: ${{ GITHUB_REF }}
         draft: false
         prerelease: false
