@@ -48,13 +48,14 @@ jobs:
           echo $GH_BRANCH
           echo GH_BRANCH
           echo ${ GH_BRANCH }
+          echo ${{ GH_BRANCH }}
      - name: Create Release GH
        id: create_release_GH
        uses: actions/create-release@v1
        env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
        with:
-        tag_name: ${{ GH_BRANCH }}
-        release_name: ${{ GH_BRANCH }}
+        tag_name: $GH_BRANCH
+        release_name: $GH_BRANCH
         draft: false
         prerelease: false
