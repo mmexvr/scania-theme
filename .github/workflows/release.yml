@@ -44,9 +44,9 @@ jobs:
        uses: actions/create-release@v1
        env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
-         GH_BRANCH: ${GH_BRANCH}
+         GH_BRANCH: test
        with:
         tag_name: ${{ env.GH_BRANCH }}
-        release_name: Versionn ${{ env.GH_BRANCH }}
+        release_name: Version ${{ env.GH_BRANCH }}
         draft: false
         prerelease: false
