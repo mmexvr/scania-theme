@@ -41,7 +41,9 @@ jobs:
           GH_BRANCH=${GITHUB_REF##*/}
           echo $GH_BRANCH
           GH_BRANCH=${{ github.ref }} 
-          echo ${{ github.ref }} 
+          echo ${{ github.ref }}
+          echo $GH_BRANCH
+          echo ${ github.ref##*/ }
      - name: Create-Release-GH
        id: create_release_GH
        uses: actions/create-release@v1
