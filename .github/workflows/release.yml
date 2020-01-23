@@ -40,7 +40,6 @@ jobs:
        run: |
           GH_BRANCH=${GITHUB_REF##*/}
           echo $GH_BRANCH
-          echo ${{ GITHUB_REF }}
           echo ${{ github.ref##*/ }} 
      - name: Create-Release-GH
        id: create_release_GH
