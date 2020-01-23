@@ -34,8 +34,6 @@ jobs:
    name: ReleaseJob-Release_on_GH
    runs-on: ubuntu-latest
    steps:
-     - name: env variable
-       id: env-var
      - run: echo "::set-env name=GH_BRANCH::${GITHUB_REF##*/}"
      - name: Create-Release-GH
        id: create_release_GH
