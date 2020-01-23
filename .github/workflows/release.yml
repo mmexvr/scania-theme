@@ -42,6 +42,7 @@ jobs:
           GH_BRANCH=${GITHUB_REF##*/}
           echo $GH_BRANCH
           echo ${{ env.GH_BRANCH}}
+     - run: echo "::set-env name=GH_BRANCH::${GITHUB_REF##*/}"
      - run: echo "::set-env name=DAY_OF_WEEK::$( date +%a )"
      - run: echo "Somebody has a case of the mondays!"
        if: env.DAY_OF_WEEK == 'Fri'
@@ -53,7 +54,7 @@ jobs:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
          GH_BRANCH: test
        with:
-        tag_name: ${{ env.DAY_OF_WEEK }}
-        release_name: ${{ env.DAY_OF_WEEK }}
+        tag_name: ${{ env.GH_BRANCH }}
+        release_name: ${{ env.GH_BRANCH }}
         draft: false
         prerelease: false
