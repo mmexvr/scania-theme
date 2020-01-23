@@ -39,7 +39,9 @@ jobs:
           GH_BRANCH: ${GITHUB_REF}
        run: |
           GH_BRANCH=${GITHUB_REF##*/}
-          echo $GH_BRANCH  
+          echo $GH_BRANCH
+          echo ${{ GITHUB_REF }}
+          echo ${{ github.ref##*/ }} 
      - name: Create-Release-GH
        id: create_release_GH
        uses: actions/create-release@v1
@@ -48,6 +50,6 @@ jobs:
          GH_BRANCH: test
        with:
         tag_name: ${{ GITHUB_REF }}
-        release_name: ${{ steps.Create-Release-GH.env.GH_BRANCH }}
+        release_name: ${{ GITHUB_REF }}
         draft: false
         prerelease: false
