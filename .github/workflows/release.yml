@@ -7,7 +7,7 @@ on:
 
 jobs:
   job_id_1: # Build/testing job
-    name: ReleaseJob-Build_on_GH
+    name: Build on GH
     runs-on: ubuntu-latest
 
     strategy:
@@ -15,9 +15,9 @@ jobs:
         node-version: [10.x, 12.x]
 
     steps: #Steps for running build
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Use NODE.js 
+      - name: Checkout Github branch
+        uses: actions/checkout@ v2
+      - name: Setup Node 
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
@@ -31,7 +31,7 @@ jobs:
 
   job_id_2: # Release on github job
    needs: job_id_1
-   name: ReleaseJob-Release_on_GH
+   name: Release on GH
    runs-on: ubuntu-latest
    steps:
      - name: Set ENV variable
