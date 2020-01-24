@@ -4,6 +4,7 @@ on:
   push:
     # Sequence of patterns matched against release branch
     branches: 'release/[12].[0-9]+.[0-9]+'
+    paths: 'package.json'
 
 jobs:
   job_id_1: # Build/testing job
