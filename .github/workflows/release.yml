@@ -1,9 +1,9 @@
-name: Release Workflow
+name: Pre-release published
 
 on:
   push:
-    # Sequence of patterns matched against release branch
-    branches: 'release/[12].[0-9]+.[0-9]+'
+    # Sequence of patterns matched against pre-release branch e.g 1.0.0-1
+    branches: 'release/[12].[0-9]+.[0-9]+-[0-9]+'
 
 jobs:
   job_id_1: # Build/testing job
@@ -29,9 +29,9 @@ jobs:
         env:
           CI: true
 
-  job_id_2: # Release on github job
+  job_id_2: # Pre-release on github job
    needs: job_id_1
-   name: Release on GH
+   name: pre-release on GH
    runs-on: ubuntu-latest
    steps:
      - name: Set ENV variable
@@ -45,4 +45,4 @@ jobs:
         tag_name: ${{ env.GH_BRANCH }} # Using correct name for each tag
         release_name: ${{ env.GH_BRANCH }}
         draft: false
-        prerelease: false
+        prerelease: true
